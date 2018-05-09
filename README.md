@@ -22,7 +22,7 @@ To use this template, your computer needs:
 
 ### Backend
 Backend uses MySQL Database 
-
+Above mentioned workhubdatadump.sql(database dump file) contains database named 'myflaskapp' where all the tables required for this app to run.
 
 ### Running the app
 
