@@ -13,7 +13,7 @@
     
         /* Set black background color, white text and some padding */
         footer {
-          background-color: #555;
+          background-color: rgb(59, 46, 46);
           color: white;
           padding: 15px;
         }
@@ -66,11 +66,17 @@
           <div class="panel-heading ">CATEGORY:  {{workers[0].category}}<span class ="pull-right">{{workers[0].username}} </span></div>
       </div>
         <div class="panel panel-primary">
-            <div class="panel-heading "><h2>{{workers[0].jobtitle}}</h2></div>
-            <div class="panel-body">{{workers[0].description}}</div>
-        
-      <hr>
+            <div class="panel-heading">
+                <button class="btn btn-lg btn-primary active pull-right">HIRE</button>
+
+              <h2 >{{workers[0].jobtitle}}</h2> 
+            </div>
+               
       <div class = "panel-body">
+          <div class="panel-body">{{workers[0].description}}</div>
+          <button type="button" class="btn  btn-primary active ">DISLIKE</button>
+          <button type="button" class="btn  btn-primary active">LIKE</button><hr>
+
       
       <label for="comment ">Comment:</label>
       <div class="row">
@@ -81,12 +87,12 @@
             <h4>@{{session.username}}</h4>
             <form>
                 <div class="form-group">
-                  <input class="form-control" rows="5" id="comment">
-                  <button type="button" class="btn pull-right">Submit</button>
+                  <input class="form-control pull-left" rows="5" id="comment">
+                  <button type="button" class="btn  btn-primary active pull-right">Submit</button>
                 </div>
               </form>
           </div>
-        </div>
+        </div><hr>
       {% for comment in comments %}
       <div class="row">
         <div class="col-sm-2 text-center">

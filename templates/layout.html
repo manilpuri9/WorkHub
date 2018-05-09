@@ -9,11 +9,16 @@
   -->
 
 <style>
+
+  a{
+   color: rgb(252, 252, 252);
+  }
+  
   
   /* Set gray background color and 100% height */
   .sidenav {
-    color: #000;
-    background-color: #a2b9c4;
+    color: rgb(252, 252, 252);
+    background-color: #2f3233e7;
     height: 100%;
   }
   
@@ -24,13 +29,20 @@
       padding: 15px;
     }
     .row.content {height: auto;} 
+    .body 
   }
+ 
 </style>
 
   </head>
-  <body>
+  <body style ="
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: rgb(252, 252, 252);
+  
+    ">
     {% include 'includes/_navbar.html' %}
-    <div class="container">
+    <div class="container" style="background-color: rgb(170, 160, 160);height: 100%;">
       {% include 'includes/_messages.html' %}
       {% block body %}{% endblock %}
     </div>
