@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {height: 1500px}
+    
+        /* Set gray background color and 100% height */
+        .sidenav {
+          background-color: #f1f1f1;
+          height: 100%;
+        }
+    
+        /* Set black background color, white text and some padding */
+        footer {
+          background-color: #555;
+          color: white;
+          padding: 15px;
+        }
+    
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+          .sidenav {
+            height: auto;
+            padding: 15px;
+          }
+          .row.content {height: auto;}
+        }
+</style>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+        <div class="panel panel-primary text-uppercase">
+            <div class="panel-body"><img src="https://placehold.it/150x80?text=WORKER" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-heading">{{workers[0].name}}  <span class="pull-right">Availability:
+                {% if workers[0].availability==1 %}
+                <span class="glyphicon glyphicon-ok-sign"></span>
+                {% else %}
+                <span class="glyphicon glyphicon-remove-sign"></span></span>
+                {% endif %}
+            </div>
+            <div class="panel-footer footer">
+               Likes:{{workers[0].likes}} <span class="pull-right">Dislikes: {{workers[0].dislikes}}</span><br>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+              <div class="panel-heading "> experiance</div>
+              <div class="panel-body">{{workers[0].experiance}}</div>
+            </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading ">EMAIL</div>
+            <div class="panel-body">{{workers[0].email}}</div>
+          </div>
+          <div class="panel panel-primary">
+              <div class="panel-heading ">ADDRESS</div>
+              <div class="panel-body">{{workers[0].address}}</div>
+            </div>
+
+    </div>
+
+    <div class="col-sm-9">
+
+      <div class="panel panel-primary">
+          <div class="panel-heading ">CATEGORY:  {{workers[0].category}}<span class ="pull-right">{{workers[0].username}} </span></div>
+      </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading "><h2>{{workers[0].jobtitle}}</h2></div>
+            <div class="panel-body">{{workers[0].description}}</div>
+        
+      <hr>
+      <div class = "panel-body">
+      
+      <label for="comment ">Comment:</label>
+      <div class="row">
+          <div class="col-sm-2 text-center">
+            <img src="https://placehold.it/150x80?text=USER" class="img-circle badges alert-*" height="65" width="65" alt="Avatar">
+          </div>
+          <div class="col-sm-10">
+            <h4>@{{session.username}}</h4>
+            <form>
+                <div class="form-group">
+                  <input class="form-control" rows="5" id="comment">
+                  <button type="button" class="btn pull-right">Submit</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      {% for comment in comments %}
+      <div class="row">
+        <div class="col-sm-2 text-center">
+          <img src="https://placehold.it/150x80?text=USER" class="img-circle badges alert-*" height="65" width="65" alt="Avatar">
+        </div>
+        <div class="col-sm-10">
+          <h4>@{{comment.author}} <small>Sep 29, 2015, 9:12 PM</small></h4>
+          <p> {{comment.comment}}</p>
+          <br>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

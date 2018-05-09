@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>{{session.username}}</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">All Workers</a></li>
+        <li class=""><a href="#section2">Engineers</a></li>
+        <li class=""><a href="#section3">Electricians</a></li>
+        <li class=""><a href="#section3">Mechanics</a></li>
+        <li class=""><a href="#section3">Drivers</a></li>
+        <li class=""><a href="#section3">Fitness Gurus</a></li>
+        <li class=""><a href="#section3">Baby Sitters</a></li>
+        <li class=""><a href="#section3">Actors</a></li>
+        <li class=""><a href="#section3">More...</a></li>
+      </ul><br>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Workers..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-9">
+    {% include 'dashboard_users.html' %}
+    </div>
+      
+  </div>
+</div>
+
+{% endblock %}

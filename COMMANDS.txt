@@ -1,0 +1,46 @@
+//create users table
+create table users(username VARCHAR(50) PRIMARY KEY,password VARCHAR(50) NOT NULL,name VARCHAR(100) NOT NULL,email VARCHAR(100) NOT NULL);
+
+
+//CREATING WORKERS TABLE
+create table workers(username VARCHAR(50) PRIMARY KEY,password VARCHAR(50) NOT NULL,name VARCHAR(100) NOT NULL,email VARCHAR(100) NOT NULL);
+
+//CREATING FOREIGN KEY WITH WORKERS TABLE
+create table workerD(username VARCHAR(50) PRIMARY KEY,name VARCHAR(100) NOT NULL,email VARCHAR(100) NOT NULL,
+address VARCHAR(500),category VARCHAR(50), likes INTEGER(10), dislikes INTEGER(10), availability INTEGER(1), FOREIGN KEY f(username) REFERENCES workers(username) ON UPDATE CASCADE ON DELETE RESTRICT);
+
+//CREATING WORKERS REVIEW TABLE
+create table workerR(username VARCHAR(50) PRIMARY KEY,author VARCHAR(50) NOT NULL,comment TEXT, FOREIGN KEY f(username) REFERENCES workers(username) ON UPDATE CASCADE ON DELETE RESTRICT);
+
+
+//inserting users
+INSERT INTO users(username, password, name, email)VALUES ("manilpuri9","hello","manil puri","manilpuri9@gmail.com");
+
+//inserting into workers
+INSERT INTO workers(username, password, name, email)VALUES ("manilpuri9","hello","manil puri","manilpuri9@gmail.com");
+
+//inserting into workerD worker details
+INSERT INTO workerD(username, name, email,address, category, likes, dislikes, availability)VALUES ("manilpuri9","manil puri","manilpuri9@gmail.com","Kathmandu,Nepal","IT",100,4,1);
+
+
+//inserting into workerR workers reviews
+INSERT INTO workerrR(username, author, comment)VALUES ("manilpuri9","jackson","he is highly skilled");
+
+//altering table
+ALTER TABLE workerD ADD experiance  text NOT NULL AFTER jobtitle;
+
+//updating table
+ UPDATE workerD SET experiance = '3', name= 'manil puri'WHERE username = 'manilpuri9';
+
+//alter table
+ALTER TABLE workers modify column passowrd VARCHAR(180) NOT NULL;
+
+cur.execute("INSERT INTO workerD(username, name, email, address, category, jobtitle, experiance, description, likes,dislikes, availability, phone) VALUES('yogesh123','yogesh','yogeshmanni@gmail.com','india','transportation','driver','4','good Driver',3,2,1);
+VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %d, %d, %d, %d )",(username, name, email, address, category, jobtitle, experiance, description, likes, dislikes, availability, phone))
+                                                   VALUES('yogesh123','yogesh','yogeshmanni@gmail.com','india','transportation','driver','4','good Driver',3,2,1);
+
+INSERT INTO workerD(username, name, email, address, category, jobtitle, experiance, description, likes,dislikes, availability, phone) VALUES('yogesh123','yogesh','yogeshmanni@gmail.com','india','transportation','driver','4','good Driver',3,2,1,23423212);
+
+
+
+UPDATE workerD SET name ='yogesh', email='yogeshmanni@gmail.com', address='india', category='transportation', jobtitle ='driver', experiance='4', description ='good Driver', likes=2, dislikes = 2, availability =1, phone=747773723 WHERE username ='yogesh123'

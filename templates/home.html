@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="jumbotron text-center" style = "background: #99ceff">
+    <h1>Welcome To WorkHub</h1>
+    <p class="lead">This app is intended to smoothen the workflow between the users and workers.</p>
+    {% if session.logged_in == NULL %}
+      <a href="/register" class="btn btn-primary btn-lg">Register</a>
+      <a href="/login_users" class="btn btn-success btn-lg">Users Login</a>
+      <a href="/login_workers" class="btn btn-success btn-lg">Workers Login</a>
+    {% endif %}
+  </div>
+{% endblock %}

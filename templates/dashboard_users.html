@@ -1,0 +1,27 @@
+
+
+{% block body %}
+  <h1>User Dashboard <small class ="pull-right"> Welcome {{session.username}}</small></h1>
+   
+  
+{% for workers in workersfound %}
+    <a href="/workerDetails/{{workers.username}}/">
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+          <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+          <div class="panel-heading">{{workers.name}}  <span class="pull-right">Availability:
+              {% if workers.availability==1 %}
+              <span class="glyphicon glyphicon-ok-sign"></span>
+              {% else %}
+              <span class="glyphicon glyphicon-remove-sign"></span></span>
+              {% endif %}
+          </div>
+          <div class="panel-footer footer">
+             Likes:{{workers.likes}} Dislikes:{{workers.dislikes}}<br>
+              {{workers.jobtitle}}</div>
+        </div>
+      </div>
+      </a>
+{% endfor %}
+
+{% endblock %}
