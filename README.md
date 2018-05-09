@@ -5,6 +5,7 @@ Simple application with authentication and CRUD functionality using the Python F
 
 
 ## Introduction:
+
  As the crowd increases, the working environment becomes increasingly messy. It is hard to find the people who are available for the particular work that we want to get done. This basically hinders the communication between workers (term used hereon forward to describe those who are available to work) and users (term used hereon forward to describe those who want to employ workers to get their work done). This is where our app comes into play. It fundamentally acts as the intermediator between these two parties. 
 
 ## How does it work:
@@ -21,7 +22,9 @@ To use this template, your computer needs:
 - [Pip Package Manager](https://pypi.python.org/pypi)
 
 ### Backend
-Backend uses MySQL Database 
+
+Backend uses MySQL Database.
+ 
 Above mentioned workhubdatadump.sql(database dump file) contains database named 'myflaskapp' where all the tables required for this app to run.
 
 ### Running the app
