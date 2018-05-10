@@ -33,4 +33,13 @@ Above mentioned workhubdatadump.sql(database dump file) contains database named 
 python app.py
 ```
 
+### Referances
+
+
+Flask Official Site -> http://flask.pocoo.org/
+
+W3School Official Site -> https://www.w3schools.com/
+
+Traversy Media   Python Flask Tutorial -> https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA
+
 
