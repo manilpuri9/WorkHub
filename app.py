@@ -5,7 +5,7 @@ from wtforms.widgets import TextArea
 from wtforms import Form, StringField,IntegerField, TextAreaField, PasswordField, validators, RadioField
 from passlib.hash import sha256_crypt
 from functools import wraps
-from data import Articles
+
 
 app = Flask(__name__)
 
@@ -77,9 +77,19 @@ class WorkerInfoForm(Form):
     description = StringField('Description',)
 #######################################################
 #######################################################
+class CommentForm(Form):
+        email = StringField('Email')
+
+
 # WorkersDetails
-@app.route('/workerDetails/<string:username>/')
+@app.route('/workerDetails/<string:username>/', methods=['GET', 'POST'])
 def workerDetails(username):
+    form = CommentForm(request.form)
+    if request.method == 'POST' and form.validate():
+         c = mysql.connection.cursor()
+
+
+        
      # Create cursor
     cur = mysql.connection.cursor()
     cur1 = mysql.connection.cursor()
@@ -130,6 +140,7 @@ def register():
             # Execute query
         
             cur.execute("INSERT INTO workers(name, email, username, password) VALUES(%s, %s, %s, %s)", (name, email, username, password))
+            cur.execute("INSERT INTO workerD(username, name, email, address, category, jobtitle, experiance, description, likes,dislikes, availability, phone) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s )",(username, name, email, 'Enter Address', 'Enter Category', 'Enter Job Title', '0', 'Add your descriptions here...', '0', '0', '0', '0'))
 
             # Commit to DB
             mysql.connection.commit()
@@ -173,6 +184,7 @@ def add_worker_details(username):
             mysql.connection.commit()
             # Close connection
             cur.close()
+        
         else:
             #Create cursor
             cur = mysql.connection.cursor()
@@ -188,8 +200,12 @@ def add_worker_details(username):
     cur1 = mysql.connection.cursor()
     cur1.execute("SELECT * FROM workerD WHERE username= %s",[username])
     workers = cur1.fetchall()
+    if(workers >0 ):
+        return render_template('add_worker_details.html', form=form, workers=workers)
+    else:
+        cur1.execute("SELECT * FROM workerD WHERE username= %s",'0')
+        workers = cur1.fetchall()
     
-    return render_template('add_worker_details.html', form=form, workers=workers)
     cur1.close()
 
 # User login

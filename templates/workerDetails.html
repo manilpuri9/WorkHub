@@ -8,13 +8,14 @@
         /* Set gray background color and 100% height */
         .sidenav {
           background-color: #f1f1f1;
+          color: black;
           height: 100%;
         }
     
         /* Set black background color, white text and some padding */
         footer {
           background-color: rgb(59, 46, 46);
-          color: white;
+         
           padding: 15px;
         }
     
@@ -25,6 +26,7 @@
             padding: 15px;
           }
           .row.content {height: auto;}
+
         }
 </style>
 <div class="container-fluid">
@@ -60,7 +62,7 @@
 
     </div>
 
-    <div class="col-sm-9">
+    <div class="col-sm-9" style="color: black">
 
       <div class="panel panel-primary">
           <div class="panel-heading ">CATEGORY:  {{workers[0].category}}<span class ="pull-right">{{workers[0].username}} </span></div>
@@ -72,7 +74,7 @@
               <h2 >{{workers[0].jobtitle}}</h2> 
             </div>
                
-      <div class = "panel-body">
+      <div class = "panel-body" >
           <div class="panel-body">{{workers[0].description}}</div>
           <button type="button" class="btn  btn-primary active ">DISLIKE</button>
           <button type="button" class="btn  btn-primary active">LIKE</button><hr>
