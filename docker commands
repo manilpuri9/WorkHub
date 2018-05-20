@@ -1,0 +1,10 @@
+ running app container
+ docker run --link sql:mysql -it -p 80:5000 -v /home/manil/Documents/git/WorkHub:/root/ manilpuri9/workhub:v1
+
+ 
+ running sql container
+ docker run --name sql -e MYSQL_ROOT_PASSWORD=my-secret-pw -v WorkHub:/root/  -d mysql
+ 
+ dump to database 
+ mysql -u root -p myflaskapp < 	workhubdatadump.sql
+
