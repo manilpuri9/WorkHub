@@ -10,8 +10,9 @@ from functools import wraps
 app = Flask(__name__)
 
 # Config MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'manil'
+app.config['MYSQL_HOST'] = 'mysql'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'my-secret-pw'
 app.config['MYSQL_DB'] = 'myflaskapp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
@@ -86,7 +87,7 @@ class CommentForm(Form):
 def workerDetails(username):
     form = CommentForm(request.form)
     if request.method == 'POST' and form.validate():
-         c = mysql.connection.cursor()
+        c = mysql.connection.cursor()
 
 
         
@@ -114,6 +115,8 @@ def register():
         email = form.email.data
         username = form.username.data
         password = sha256_crypt.encrypt(str(form.password.data))
+        #password = str(form.password.data)
+
         registerdata = form.register_as.data
         print(registerdata)
         if registerdata =='1':
@@ -270,8 +273,7 @@ def login_workers():
             password = data['password']
 
             # Compare Passwords
-            if sha256_crypt.verify(password_candidate, password):
-                # Passed
+            if sha256_crypt.verify(password_candidate, password):                # Passed
                 session['logged_in'] = True
                 session['username'] = username
                 session['register_as'] = '2'
